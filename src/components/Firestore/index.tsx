@@ -36,10 +36,8 @@ export default () => {
         .collection('users')
         .doc(user?.uid)
         .onSnapshot(documentSnapshot => {
-          console.log('User data: ', documentSnapshot?.data());
           const newUserEdit: any = documentSnapshot?.data();
           if (documentSnapshot?.data()) {
-            // setUserInfo(newUserEdit);
             setNameField(newUserEdit.name);
             setEmailField(newUserEdit.email);
             setPasswordField(newUserEdit.password);
@@ -47,7 +45,6 @@ export default () => {
             setDate(convertDateUTC(newUserEdit.dataNasc));
           }
         });
-      // Stop listening for updates when no longer required
       return () => subscriber();
     } catch (error: any) {
       console.log('log error', error);
@@ -74,7 +71,6 @@ export default () => {
       const data = {
         name: nameField,
         email: emailField,
-        // age, // Para deletar esse dados apenas não passar a informação
         dataNascFull: date,
         dataNasc: dateFormatter(date),
         password: passwordField,

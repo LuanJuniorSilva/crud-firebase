@@ -2,7 +2,6 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import {Provider as PaperProvider, DefaultTheme} from 'react-native-paper';
-// import {Text, View} from 'react-native';
 import Preload from './src/screens/Preload';
 import Login from './src/screens/Login';
 import Create from './src/screens/Create';

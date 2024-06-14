@@ -25,16 +25,13 @@ export default () => {
   const deleteFirestoreData = async () => {
     try {
       await firestore().collection('users').doc(userId).delete();
-      console.log('Documento do Firestore excluído com sucesso.');
     } catch (error) {
-      console.error('Erro ao excluir documento do Firestore: ', error);
     }
   };
 
   const deleteRealtimeDatabaseData = async () => {
     try {
       await database().ref(`/users/${userId}`).remove();
-      console.log('Dados do Realtime Database excluídos com sucesso.');
     } catch (error) {
       console.error('Erro ao excluir dados do Realtime Database: ', error);
     }
@@ -45,7 +42,6 @@ export default () => {
     if (user) {
       try {
         await user.delete();
-        console.log('Usuário excluído com sucesso.');
       } catch (error) {
         console.error('Erro ao excluir usuário: ', error);
       }
@@ -59,7 +55,6 @@ export default () => {
       await auth().signOut();
       navigation.reset({index: 0, routes: [{name: 'Login'}]});
     } catch (error: any) {
-      console.log(error.code);
       Alert.alert('Falha ao fazer Logout');
     } finally {
       setLoading(false);
@@ -69,16 +64,11 @@ export default () => {
     try {
       setLoading(true);
       setVisible2(false);
-      // Excluir dados do Firestore
       await deleteFirestoreData();
-
-      // Excluir dados do Realtime Database
       await deleteRealtimeDatabaseData();
 
-      // Excluir usuário autenticado
       await deleteUser();
 
-      console.log('Conta e todos os dados excluídos com sucesso.');
       navigation.reset({index: 0, routes: [{name: 'Login'}]});
     } catch (error) {
       console.error('Erro ao excluir conta e dados: ', error);

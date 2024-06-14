@@ -36,7 +36,6 @@ export default () => {
       await auth().signInWithEmailAndPassword(emailField, passwordField);
       navigation.reset({index: 0, routes: [{name: 'Home'}]});
     } catch (error: any) {
-      console.log('falha no login', error.code);
       Alert.alert('Por favor digite os dados corretamente!');
     } finally {
       setLoading(false);

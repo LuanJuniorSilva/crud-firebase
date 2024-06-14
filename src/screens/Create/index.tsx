@@ -68,12 +68,10 @@ export default () => {
       navigation.navigate('Home');
     } catch (error: any) {
       if (error.code === 'auth/email-already-in-use') {
-        console.log('That email address is already in use!');
         Alert.alert('Este e-mail já existe!');
       }
 
       if (error.code === 'auth/invalid-email') {
-        console.log('That email address is invalid!');
         Alert.alert('Este e-mail é inválido!');
       }
 

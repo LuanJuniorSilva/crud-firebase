@@ -34,9 +34,6 @@ export default () => {
   useEffect(() => {
     const userRef = database().ref(`/users/${user?.uid}`);
     userRef.on('value', snapshot => {
-      // once normal e on em tempo real
-      // setUserData(snapshot.val());
-      console.log('newData', snapshot.val());
       const newUserEdit: any = snapshot.val();
       if (snapshot.val()) {
         setNameField(newUserEdit.name);
@@ -68,7 +65,7 @@ export default () => {
       const data = {
         name: nameField,
         email: emailField,
-        age, // Para deletar esse dados apenas não passar a informação ou deixar null
+        age,
         dataNascFull: date,
         dataNasc: dateFormatter(date),
         password: passwordField,
